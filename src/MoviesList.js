@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-
+import { Container ,Card, Form} from 'react-bootstrap'
 class MovieList extends React.Component{
     constructor(){
         super()
@@ -29,21 +29,26 @@ class MovieList extends React.Component{
     render(){
         console.log('state',this.state.movies)
         return(
-            <div>
-                <input type='search' name='data' onChange={this.handleSearch} placeholder='search title'></input>
-                
-                {
-                    this.state.movies!=undefined?(
-                        <div>
-                            <ul>
-                                {
-                                    this.state.movies.map((ele,i)=>{
-                                        return (<li key={i}><Link to={`/movies/${ele.imdbID}`}>{ele.Title}</Link></li>)
-                                    })
-                                }
-                            </ul>
-                        </div>):('')
-                }
+            <div className='fluid-container'>
+                <Container>
+                    <h1 className='pt-5 pb-2' style={{textAlign:"center",fontSize:'34px'}}>Search Your Movie Name </h1>
+                    <Form.Control size='lg'
+                        type='search' 
+                        name='data'   
+                        onChange={this.handleSearch} 
+                        placeholder='search movie by title'
+                    />
+                    {
+                        this.state.movies!=undefined?(
+                            <div>
+                                    {
+                                        this.state.movies.map((ele,i)=>{
+                                            return (<Card.Title key={i}><Link to={`/movies/${ele.imdbID}`}>{ele.Title}</Link></Card.Title>)
+                                        })
+                                    }
+                            </div>):('')
+                    }
+                </Container>
                 
             </div>
         )

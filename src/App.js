@@ -1,18 +1,19 @@
 import React from 'react'
-import {BrowserRouter,Route,Link} from 'react-router-dom'
+import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
 import MovieList from './MoviesList'
 import MovieShow from './MoviesDetails'
 import 'bootstrap/dist/css/bootstrap.css';
+import './App.css'
 function App(props)
 {
     return(
         <BrowserRouter>
-            <div>
-                <h2>Movie Application!!!</h2>
+            <div>  
                 <Link to='/'></Link>
-
-                <Route path='/' component={MovieList} exact={true}/>
-                <Route path='/movies/:id' component={MovieShow}/>
+                <Switch>
+                    <Route path='/' component={MovieList} exact={true}/>
+                    <Route path='/movies/:id' component={MovieShow}/>
+                </Switch>
             </div>
         </BrowserRouter>
     )

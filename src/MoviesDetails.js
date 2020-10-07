@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import {Card} from 'react-bootstrap'
+import {Card,Container,Row,Col, Alert} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 class MovieShow extends React.Component{
@@ -22,30 +22,36 @@ class MovieShow extends React.Component{
     render(){
         // console.log('show',this.state.show.title)
         return(
-            <div>
-                <Card style={{ width: '22 rem' }}>
-                    <Card.Img variant="top" src={this.state.show.Poster}/> 
-                    <Card.Body>
-                        <Card.Title>
-                            <b>Movie Name:--- {this.state.show.Title}</b>
-                        </Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">
-                            <b>
-                                RunTime:- {this.state.show.Runtime}<br/>
-                                Year of release:- {this.state.show.Year} <br/>
-                                country:--{this.state.show.Country}<br/>
-                                Genre - {this.state.show.Genre}<br/>
-                                Language - {this.state.show.Language}
-                            </b>
-                        </Card.Subtitle>
-                        <Card.Text>
-                            <b>Actors:----{this.state.show.Actors}</b><br/>
-                            <b>Description:--{this.state.show.Plot}</b>
-                        </Card.Text>
-                        <Card.Link href="/">Back</Card.Link>
-                    </Card.Body>
-                </Card>
+            <div className='fluid-container'>
+                <h1 className='pt-5 pb-2' style={{textAlign:"center"}}>Movie Details </h1>
+                <Container>
+                        <Card.Body className='border rounded-lg pl-5 mt-5'>
+                            <Card.Header className='border-0 ml-3 mb-3'>
+                                <b>Movie Name:--- {this.state.show.Title}</b>
+                            </Card.Header>
+                                <Row>
+                                    <Col md={6}><img src={this.state.show.Poster} alt='pic of candidate' className='img-rersponsive ml-3' style={{width:'auto',height:'auto'}}></img></Col>
+                                    <Col md={6}>
+                                        <Alert varient='success'>
+                                        <p className='ml-3'>
+                                            <b> Released - </b>{this.state.show.Released} ({this.state.show.Runtime})<br/>
+                                            <b>Awards - </b>{this.state.show.Awards}<br/>
+                                            <b> Country - </b>{this.state.show.Country}<br/>
+                                            <b> Language -</b> {this.state.show.Language}<br/>
+                                            <b>Actors - </b>{this.state.show.Actors}<br/>
+                                            <b> Writer -</b>{this.state.show.Writer}<br/>
+                                            <b>Genre -</b> {this.state.show.Genre}<br/>
+                                            
+                                        </p>
+                                        </Alert>
+                                        
+                                    </Col>
+                                </Row><br/>
+                            <Card.Link href="/">back</Card.Link>
+                        </Card.Body>
+                </Container>
             </div>
+
         )
     }
 }
