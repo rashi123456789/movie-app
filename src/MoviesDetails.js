@@ -12,7 +12,7 @@ class MovieShow extends React.Component{
     }
     componentDidMount(){
         const id=this.props.match.params.id
-        axios.get(`http://www.omdbapi.com/?i=${id}&apikey=caac10e0`)
+        axios.get(`https://www.omdbapi.com/?i=${id}&apikey=caac10e0`)
         .then(response=>{
             const show=response.data
             console.log('movie show',show)

@@ -13,7 +13,7 @@ class MovieList extends React.Component{
     handleSearch=(e)=>{
         const data=e.target.value
         this.setState({data})
-        axios.get(`http://www.omdbapi.com/?apikey=caac10e0&s=${data}&type=movie`)
+        axios.get(`https://www.omdbapi.com/?apikey=caac10e0&s=${data}&type=movie`)
         .then(response=>{
             const search=response.data.Search
             console.log('movies list',search)
